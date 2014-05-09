@@ -1,0 +1,1 @@
+define(["events","syntax","comments"],function(e,t,n){function r(){var e=$$("#bbp_reply_content, #bbp_topic_content");e.length&&(e=e[0],e.parentNode.appendChild(e),n.createEditor(e))}z.ajaxPageLoads&&e.subscribe("/page/ready",t.highlightForums),r(),e.subscribe("/page/ready",r)});
