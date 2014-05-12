@@ -3,3 +3,6 @@ Dja
 	* staff side
 Clare
 	* user side
+
+Mga tapos na:
+	* Blah blah 
