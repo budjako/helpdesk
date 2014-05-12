@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Exercise</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<script type="text/javascript">
+			window.onload=function(){
+				myform.inservices.onblur=validateServices;
+				myform.inname.onblur=validateName;//
+				myform.incell.onblur=validateCell;//
+				myform.inusername.onblur=validateUsername;//
+				myform.inpassword.onblur=validatePassword;//
+				myform.inretypepassword.onblur=validateRetypePassword;//
+				myform.inbdate.onblur=validateBdate;//
+				myform.inemail.onblur=validateEmail;//
+				myform.insex.onblur=validateSex;
+				myform.onsubmit=displayValues;
+			}
+			function validateName(){
+				msg="Invalid input: ";
+				str=myform.inname.value;
+				if(str=="") msg+="Name is required!";
+				else if(str.match(/^[a-zA-Z\ \.\-\,]+$/)) msg="";
+				else msg+="Check proper format"
+				document.getElementsByName("helpname")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateSex(){
+				msg="Invalid input: ";
+				str=myform.insex.value;
+				if(str=="") msg+="Sex is required!";
+				else msg="";
+				document.getElementsByName("helpsex")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateCell(){
+				msg="Invalid input: ";
+				str=myform.incell.value;
+				if(str=="") msg+="Cell number is required!";
+				else if(str.match(/^\+[0-9]{11}$/)) msg="";//nos. accepted
+				else msg+="Check proper format.";
+				document.getElementsByName("helpcell")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateUsername(){
+				msg="Invalid input: ";
+				str=myform.inusername.value;
+				if(str=="") msg+="Username is required!";
+				else if(str.match(/^[a-zA-Z][a-zA-Z0-9_]{3,11}$/)) msg="";//nos. accepted
+				else msg+="Check proper format";
+				document.getElementsByName("helpusername")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validatePassword(){
+				msg="Invalid input: ";
+				str=myform.inpassword.value;
+				if(str=="") msg+="Password is required!";
+				if(str.match(/^[a-z]+$/)) msg="Strength: Weak";
+				else if(str.match(/^[0-9]+$/)) msg="Strength: Weak";
+				else if(str.match(/^[a-z0-9]+$/)) msg="Strength: Medium";
+				else if(str.match(/^[a-zA-Z0-9]+$/)) msg="Strength: Strong";
+				document.getElementsByName("helppassword")[0].innerHTML=msg;
+				if(msg!="Invalid input: Password is required!") return true;
+			}
+			function validateRetypePassword(){
+				msg="Invalid input: ";
+				str=myform.inretypepassword.value;
+				str2=myform.inpassword.value;
+				if(str=="") msg+="Revalidation required!";
+				else if(str===str2) msg="";
+				else msg+="Password does not match";
+				document.getElementsByName("helpretypepassword")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateBdate(){
+				msg="Invalid input: "
+				str=myform.inbdate.value;
+				if(str=="") msg+="Birthdate is required!";
+				else if(str.match(/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/)) msg="";
+				else msg+="Format should follow: mm/dd/yyyy";
+				document.getElementsByName("helpbday")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateEmail(){
+				msg="Invalid input: "
+				str=myform.inemail.value;
+				if(str=="") msg+="Email is required!";
+				else if(str.match(/^[a-zA-Z][a-zA-Z\d_\.]+@[a-zA-Z]{3,}((\.[a-zA-Z]{1,3})+)$/)) msg="";
+				else msg+="Not a valid email address";
+				document.getElementsByName("helpemail")[0].innerHTML=msg;
+				if(msg=="") return true;
+			}
+			function validateServices(){
+				ctr=0;
+				msg="Invalid input: "
+				for(i=0;i<document.myform.inservices.length;i++){
+					if(document.myform.inservices[i].checked==true){
+						ctr+=1;
+					}
+				}
+				if(ctr<1||ctr>3) msg+="Check at least one and at most 3 checkboxes.";
+				else msg="";
+				document.getElementsByName("helpservices")[0].innerHTML=msg;
+				if(msg=="") return true;
+				else return false;
+			}
+			function checkAll(){
+				if(validateName()&&validateSex()&&validateCell()&&validateUsername()&&validatePassword()&&validateRetypePassword()&&validateBdate()&&validateEmail()&&validateServices()){
+				    
+					msg="Name: "+myform.inname.value+"</br>";
+					msg+="Sex: ";
+					for(i=0; i<document.myform.insex.length;i++){
+						if(document.myform.insex[i].checked==true)
+							msg+=document.myform.insex[i].value;
+					}
+					msg+="</br>Email: "+myform.inemail.value+"</br>";
+					msg+="Username: "+myform.inusername.value+"</br>";
+					msg+="Birthdate: "+myform.inbdate.value+"</br>";
+					msg+="Cell no: "+myform.incell.value+"</br>";
+					msg+="Services: ";
+					for(i=0; i<document.myform.inservices.length;i++){
+						if(document.myform.inservices[i].checked==true)
+							msg+=document.myform.inservices[i].value;
+					}
+					document.getElementsByName("print")[0].innerHTML=msg;
+					return true;
+				}
+				else return false;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="form">
+			<h1>User Details</h1>
+			<form name="myform" action="next.php" method="post">
+				<label class="label">Name:</label> 
+				<input type="text" name="inname" required="required"/>
+				<span name="helpname"></span></br>
+				<label class="label">Sex: </label>
+					<input type="radio" id="male" name="insex" value="male" required="required"/> 
+					<label for="male">Male</label>
+					<input type="radio" id="female" name="insex"value="female"/>
+					<label for="female">Female</label>
+					<span name="helpsex"></span></br>
+				<label class="label">Email: </label>
+				<input type="email" name="inemail" required="required"/>
+				<span name="helpemail"></span></br>
+				<label class="label">Username: </label>
+				<input type="text" name="inusername" required="required"/>
+				<span name="helpusername"></span></br>
+				<label class="label">Password: </label>
+				<input type="password" name="inpassword" required="required"/>
+				<span name="helppassword"></span></br>
+				<label class="label">Re-type password: </label>
+				<input type="password" name="inretypepassword" required="required"/>
+				<span name="helpretypepassword"></span></br>
+				<label class="label">Birthday: </label>
+				<input type="text" name="inbdate" required="required">
+				<span name="helpbday"></span></br>
+				<label class="label">Cell no: </label>
+				<input type="tel" name="incell"/ required="required">
+				<span name="helpcell"></span></br>
+				<label class="label">Services: </label></br>
+					<label><input class="input" type="checkbox" value="handspa" name="inservices" onclick="validateServices()">Handspa</label></br>
+					<label><input class="input" type="checkbox" value="footspa" name="inservices" onclick="validateServices()">Footspa</label></br>
+					<label><input class="input" type="checkbox" value="pedicure" name="inservices" onclick="validateServices()">Pedicure</label></br>
+					<label><input class="input" type="checkbox" value="massage" name="inservices" onclick="validateServices()">Massage</label></br>
+					<label><input class="input" type="checkbox" value="facial" name="inservices" onclick="validateServices()">Facial</label></br>
+				<span name="helpservices"></span></br>
+				<input id="submit" type="submit"/>
+			</form>
+			<p name="print"></p>
+		</div>
+	</body>
+</html>

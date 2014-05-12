@@ -1,0 +1,31 @@
+body{
+	font-family: "Verdana" "Arial";
+	background: #480000 ;
+}
+span{
+	background: red;
+}
+.label{
+	display: inline-block;
+	float:left;
+	clear:left;
+	width:150px;
+}
+.input{
+	margin-left: 150px;
+}
+#form{
+	border: black solid 3px;
+	background: #888888 ;
+	width:670px;
+	margin-right: auto;
+	margin-left: auto;
+	padding:10px;
+	border-radius: 10px;
+}
+#submit{
+	margin-left: 70px;
+}
+h1{
+	text-align: center;
+}
