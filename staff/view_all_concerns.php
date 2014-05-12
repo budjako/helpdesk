@@ -3,6 +3,38 @@
 	<head>
 		<title>Create New Staff Account</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script>
+			function viewByDivision(){
+				<?php
+					$query = "SELECT DISTINCT * FROM concern where view='0'";
+
+					$result = mysql_query($query);
+
+					if (!$result) die(mysql_error());
+
+					$query = "SELECT * FROM concern where view='0'";
+
+					$result = mysql_query($query);
+
+					if (!$result) die(mysql_error());
+
+					echo "<table>";
+					echo "<tr><th>Concern Number</th><th>Subject</th><th>Body</th><th>Source</th><th>Sender</th></tr>";
+					while ($row = mysql_fetch_assoc($result)) {
+						echo "<tr>";
+						echo "<td>".$row['c_no']."</td>";
+						echo "<td>".$row['subject']."</td>";
+						echo "<td>".$row['body']."</td>";
+						echo "<td>".$row['source']."</td>";
+						echo "<td>".$row['sender']."</td>";
+						echo "</tr>";
+					}
+					echo "</table>";
+
+					mysql_free_result($result);  
+				?>
+			}
+		</script>
 	</head>
 	<body>
 		<h1>Concerns</h1>
@@ -66,8 +98,15 @@
 			<option value="SFAD">SFAD</option>
 			<option value="SOAD">SOAD</option>
 		</select>
-		
+		<button type="button" onclick="viewByDivision()">View</button>
+
 		<?php
+			$query = "SELECT DISTINCT * FROM concern where view='0'";
+
+			$result = mysql_query($query);
+
+			if (!$result) die(mysql_error());
+
 			$query = "SELECT * FROM concern where view='0'";
 
 			$result = mysql_query($query);
