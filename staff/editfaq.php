@@ -14,12 +14,10 @@
 		if (!$result) die(mysql_error());
 		
 		while ($row = mysql_fetch_assoc($result)) {
-			echo "<form>";
-			echo "<label>Question: </label><input type='text' value='".$row['question']."'></input></td></br>";
-			echo "<label>Answer: </label><input type='text' value='".$row['answer']."'></input></td></br>";
-			echo "<label>Tags: </label><input type='text' value='".$row['tag']."'></input></td></br>";
-			echo "<input type='submit' value='Save'></input>";
-			echo "</form>";
+			echo "<label>Question: </label><input type='text' id='editquestion' value='".$row['question']."'></input></td></br>";
+			echo "<label>Answer: </label><input type='text' id='editanswer' value='".$row['answer']."'></input></td></br>";
+			echo "<label>Tags: </label><input type='text' id='edittags' value='".$row['tag']."'></input></td></br>";
+			echo "<input type='button' value='Save' onclick=editfaq()></input>";
 		}
 
 		mysql_free_result($result);
