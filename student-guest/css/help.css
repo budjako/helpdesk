@@ -1,0 +1,47 @@
+#header-help{
+	padding: 1em;
+	border-bottom: 4px solid #A80000;
+	color: #A80000;
+	font-family: 'Quicksand';
+	max-width: 1200px;
+}
+
+#help-logo{
+	width: 90px;
+	height: 90px;
+	float:left;
+	margin-right: 1em;
+}
+
+.help-container{
+	max-width: 1200px;
+	margin-bottom: 2em;
+	font-family: 'Quicksand';
+
+}
+
+#help-notif{
+background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 26%, rgba(128,194,23,1) 65%, rgba(128,194,23,1) 86%, rgba(124,188,10,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(26%,rgba(161,213,79,1)), color-stop(65%,rgba(128,194,23,1)), color-stop(86%,rgba(128,194,23,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Opera 11.10+ */
+height: 50px;
+text-align:center;
+margin-top: 1em;
+padding: 0.1em;
+display: none;
+}
+
+.help-container table td{
+	padding: 1em;
+}
+	
+.other-info{
+	font-style: italic;
+	font-size: 15px;
+}
+
+#link-help a{
+	float:right;
+	color: red;
+}
