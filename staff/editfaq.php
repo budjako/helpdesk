@@ -4,8 +4,26 @@
 
 
 <?php
-	echo $_POST['faqno'];
 	if(isset($_POST['faqno'])){
+		$faqno=$_POST['faqno'];
+
+		$query = "SELECT * FROM faqs where faqno=".$faqno;
+
+		$result = mysql_query($query);
+
+		if (!$result) die(mysql_error());
+		
+		while ($row = mysql_fetch_assoc($result)) {
+			echo "<form>";
+			echo "<label>Question: </label><input type='text' value='".$row['question']."'></input></td></br>";
+			echo "<label>Answer: </label><input type='text' value='".$row['answer']."'></input></td></br>";
+			echo "<label>Tags: </label><input type='text' value='".$row['tag']."'></input></td></br>";
+			echo "<input type='submit' value='Save'></input>";
+			echo "</form>";
+		}
+
+		mysql_free_result($result);
+
 
 	}
 	else{
