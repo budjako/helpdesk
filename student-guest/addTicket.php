@@ -16,13 +16,11 @@
 	if(!empty($_SESSION['username'])){
 		$username = $_SESSION['username'];
 		$sql = "INSERT INTO tickets VALUES ('','$subject',NOW(),'tags', '$division', 0, NOW(), '$type', '$username', NULL, NULL)";
-		var_dump($sql);
 	}
 	else{
 		$sql = "INSERT INTO tickets VALUES ('','$subject', NOW(), 'tags', '$division', 0, NOW(), '$type', NULL, NULL, NULL )";
 	}
 	$result = mysql_query($sql);
-	var_dump($result);
 	if($result)
 		echo "Successfully Added! ";
 	else

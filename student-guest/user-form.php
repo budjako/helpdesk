@@ -171,23 +171,23 @@
 										<td>
 											Division:
 												<select id="division" name="division">
-													<option value="commit">Communications and Information and Technology (COMMIT)</option>
-													<option value="ctd">Counseling and Testing Division (CTD)</option>
-													<option value="do">Director's Office (DO)</option>
-													<option value="iss">International Students Section (ISS)</option>
-													<option value="sfad">Scholarships and Financial Assistance Division (SFAD)</option>
-													<option value="sdt">Student Disciplinary Tribunal (SDT)</option>
-													<option value="soad">Student Organizations and Activities Division (SOAD)</option>
+													<option value="COMMIT">Communications and Information and Technology (COMMIT)</option>
+													<option value="CTD">Counseling and Testing Division (CTD)</option>
+													<option value="DO">Director's Office (DO)</option>
+													<option value="ISS">International Students Section (ISS)</option>
+													<option value="SFAD">Scholarships and Financial Assistance Division (SFAD)</option>
+													<option value="SDT">Student Disciplinary Tribunal (SDT)</option>
+													<option value="SOAD">Student Organizations and Activities Division (SOAD)</option>
 												</select>
 										</td>
 										<td>
 											Tags:
 												<select multiple id="tags" name="tags">
-													<option>Assistanship</option>
-													<option>OSAM Account</option>
-													<option>STS</option>
-													<option>SLB</option>
-													<option>Clearance</option>
+													<option value="assistanship">Assistanship</option>
+													<option value="osam account">OSAM Account</option>
+													<option value="sts">STS</option>
+													<option value="slb">SLB</option>
+													<option value="clearance">Clearance</option>
 												</select>
 										</td>
 									</tr>
