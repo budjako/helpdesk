@@ -24,11 +24,6 @@ function guesttickets(){
 	});
 }
 
-function editfaq(){
-	var question=$("#editquestion").val();
-	var answer=$("#editanswer").val();
-	var tags=$("#edittags").val();
-	console.log(question);
-	console.log(answer);
-	console.log(tags);
+function redirectpagefaqs(){
+	window.location.replace("editfaq.php");
 }

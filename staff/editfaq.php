@@ -14,15 +14,17 @@
 		if (!$result) die(mysql_error());
 		
 		while ($row = mysql_fetch_assoc($result)) {
-			echo "<label>Question: </label><input type='text' id='editquestion' value='".$row['question']."'></input></td></br>";
-			echo "<label>Answer: </label><input type='text' id='editanswer' value='".$row['answer']."'></input></td></br>";
-			echo "<label>Tags: </label><input type='text' id='edittags' value='".$row['tag']."'></input></td></br>";
-			echo "<input type='button' value='Save' onclick=editfaq()></input>";
+			echo "<form action='load.php' method='POST'>";
+			echo "<input type='hidden' name='editfaqno' value='".$faqno."'></input>";
+			echo "<label>Question: </label><input type='text' name='editquestion' value='".$row['question']."'></input></td></br>";
+			echo "<label>Answer: </label><input type='text' name='editanswer' value='".$row['answer']."'></input></td></br>";
+			echo "<label>Tags: </label><input type='text' name='edittags' value='".$row['tag']."'></input></td></br>";
+			echo "<input type='submit' name='faqedit' value='Save'></input>";
+			echo "<input type='button' value='Cancel' onclick='redirectpagefaqs()'>";
+			echo "</form>";
 		}
 
 		mysql_free_result($result);
-
-
 	}
 	else{
 		echo "<h1>FAQ</h1>";
