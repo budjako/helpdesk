@@ -41,6 +41,22 @@
 			mysql_free_result($result);
 		?>
 
+<!-- ALL TICKETS SORTED-->
+		<h1>All Tickets Sorted</h1>
+		<select id="selectsort">
+			<option value="1">Ticket Number</option>
+			<option value="2">Ascending Date Submitted</option>
+			<option value="3">Descending Date Submitted</option>
+			<option value="4">Number of Threads</option>
+			<option value="5">Ascending Date Last Updated</option>
+			<option value="6">Descending Date Last Updated</option>
+			<option value="7">Division</option>
+			<option value="8">Questions only</option>
+			<option value="9">Feedbacks/Suggestions only</option>
+		</select>
+		<input type='button' value='View Tickets' onclick='sortedtickets();'/>
+		<div class='divticketsort'></div>
+
 <!-- CLOSED TICKETS -->
 		<?php
 			echo "<h1>Closed Tickets</h1>";
