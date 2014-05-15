@@ -1,4 +1,6 @@
-<?php require_once('header.html');?>
+<?php 
+	require_once('header.html');
+?>
 					<section id="content-menu" class="content-menu">
 						<nav id="menu-wrapper" class="menu-component menu-wrapper">
 							<button class="menu-trigger">Menu</button>
@@ -28,21 +30,7 @@
 						</section>
 						<div class="help-container">
 							<p id="link-help"><a href="#">Need Help?</a><p>
-						</div>	
-						Filter by: 
-							<select>
-								<option>Division</option>
-								<option>Tags</option>
-							</select>		
-						Division
-							<select>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-								<option></option>
-							</select>			
+						</div>						
 					</div>
-<?php include_once("close.php"); ?>
+<?php include_once("close.php"); ?>					
 <?php require_once('footer.html');?>
