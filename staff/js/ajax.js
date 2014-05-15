@@ -23,3 +23,7 @@ function guesttickets(){
 		}
 	});
 }
+
+function redirectpagefaqs(){
+	window.location.replace("editfaq.php");
+}
