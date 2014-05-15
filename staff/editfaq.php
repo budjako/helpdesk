@@ -49,11 +49,30 @@
 					<input type='hidden' name='faqno' value=".$row['faqno'].">
 					<input type='submit' value='Edit item'>
 				</form>
-			</td></tr>";
+			</td>";
+			echo "<td>
+				<form action='load.php' method='POST'>
+					<input type='hidden' name='faqno' value=".$row['faqno'].">
+					<input type='submit' name='faqdelete' value='Delete item'>
+				</form>
+			</td>";
+			echo "</tr>";
 		}
 		echo "</table>";
 
 		mysql_free_result($result);
+
+		echo "<h1>Add item in FAQ</h1>";
+
+		echo "<form action='load.php' method='POST'>";
+		echo "<label>Question: </label><input type='text' name='addquestion' required='required'></input></td></br>";
+		echo "<label>Answer: </label><input type='text' name='addanswer' required='required'></input></td></br>";
+		echo "<label>Tags: </label><input type='text' name='addtags'></input></td></br>";
+		echo "<input type='submit' name='faqadd' value='Add to FAQ'></input>";
+		echo "</form>";
+
+
+		echo "<br/><br/><a href='home.php'>Back to Home</a>";
 	}
 ?>
 
