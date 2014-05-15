@@ -92,7 +92,7 @@
 										</td>
 										<td>
 											Tags:
-												<select multiple id="tags" name="tags">
+												<select multiple id="tags" name="tags[]">
 													<option value="assistanship">Assistanship</option>
 													<option value="osam account">OSAM Account</option>
 													<option value="sts">STS</option>
