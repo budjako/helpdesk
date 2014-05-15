@@ -95,7 +95,10 @@
 				$query = "SELECT * FROM tickets ORDER BY tid";
 				if($sortby==2) $query = "SELECT * FROM tickets ORDER BY datesubmit ASC";
 				else if($sortby==3) $query = "SELECT * FROM tickets ORDER BY datesubmit DESC";
-			//	else if($sortby==4) $query = "SELECT * FROM tickets INNER JOIN threads ON tid=t_id";
+				else if($sortby==4) $query = "SELECT * from tickets LEFT JOIN (
+													select t_id, count(*) N from threads
+													group by t_id) t ON tid=t_id
+												order by N desc";
 				else if($sortby==5) $query = "SELECT * FROM tickets ORDER BY datelastupdate ASC";
 				else if($sortby==6) $query = "SELECT * FROM tickets ORDER BY datelastupdate DESC";
 				else if($sortby==7) $query = "SELECT * FROM tickets ORDER BY division";

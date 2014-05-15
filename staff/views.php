@@ -179,7 +179,14 @@
 						<input type='hidden' name='faqno' value=".$row['faqno'].">
 						<input type='submit' value='Edit item'>
 					</form>
-				</td></tr>";
+				</td>";
+				echo "<td>
+					<form action='load.php' method='POST'>
+						<input type='hidden' name='faqno' value=".$row['faqno'].">
+						<input type='submit' name='faqdelete' value='Delete item'>
+					</form>
+				</td>";
+				echo "</tr>";
 			}
 			echo "</table>";
 
