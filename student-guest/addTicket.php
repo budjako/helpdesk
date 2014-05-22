@@ -14,7 +14,7 @@
 		$description = $_POST['description'];
 
 	if($type=='Inquiry') $type=0; else $type=1;
-	$tageach = 0;
+	$tageach="";
 	foreach($tags as $select)
 		$tageach .= $select.',';
 

@@ -1,39 +1,14 @@
-<?php require_once('header.html');?>
-			<?php require_once('connect.php');?>
-					<section id="content-menu" class="content-menu">
-						<nav id="menu-wrapper" class="menu-component menu-wrapper">
-							<button class="menu-trigger">Menu</button>
-							<ul class="menu menu-toggle clearfix">
-								<li><a href=""><div class="menu-item">Home</div></a></li>
-								<li>
-									<a href=""><div class="menu-item">Student Orgs</div><div class="icon-next"></div></a>
-									<ul class="submenu">
-										<li><a href=""><div class="menu-subitem">Recognized Orgs</div></a></li>
-										<li><a href=""><div class="menu-subitem">Reminders</div></a></li>
-										<li><a href=""><div class="menu-subitem">Recognition Guidelines</div></a></li>
-										<li><a href=""><div class="menu-subitem">Application for Recognition</div></a></li>
-										<li><a href=""><div class="menu-subitem">Mailing List</div></a></li>
-									</ul>
-								</li>
-								<li><a href=""><div class="menu-item">Scholarship</div></a></li>
-								<li><a href=""><div class="menu-item">OSA Staff</div></a></li>
-								<li><a href=""><div class="menu-item">Help</div></a></li>
-							</ul>
-						</nav>
-					</section>
+<?php
+	require_once('connect.php');
+?>						
 
-					<div id="content-box" class="content-box clearfix">
-						<section id="header-help">
-							<img src="img/help/help-logo.png" id="help-logo">
-							<h1>OSAM Help Desk</h1>
-						</section>
-						<div class="help-container">
 							<section id="help-notif">
-								<p>Success! Reply will be sent to your email</p>
+								
 							</section>
+							<br />
+							<a href='help.php'>&laquo Back to Categories</a>
 							<p class="other-info"> Please fill in the form below.	</p>
 							<?php session_start();
-								include_once('connect.php');
 							?>
 							<?php
 								if(!empty($_SESSION['username'])){
@@ -50,7 +25,7 @@
 									$_SESSION['user'] = 'guest';
 								}							
 							?>
-							<form action="addTicket.php" method="post">
+							<form id="formhelp" >
 								<table>
 									<tr>
 										<td> * Firstname :
@@ -62,11 +37,11 @@
 									</tr>
 									<tr>
 										<td>* Email : 
-										<input type="email" name="email" id="user-email" value="<?php if(isset($username)) echo $row['email']?>" required /></td>
+										<input type="email" name="email" id="email" value="<?php if(isset($username)) echo $row['email']?>" required /></td>
 									</tr>
 									<tr>
 										<td>* Type:
-												<select name="type">
+												<select name="type" id="type">
 													<option value="inquiry">Inquiry</option>
 													<option value="feedback">Feedback</option>
 												</select>
@@ -110,9 +85,5 @@
 								</table>
 								<p class="other-info"> * Required fields</p>
 								<input type="reset" value="Reset" id="reset-help" />
-								<input type="submit" value="Submit" id="submit-help" onclick="submit_func"/>
+								<input type="submit" value="Submit" id="submit-help" />
 							</form>
-						</div>						
-					</div>
-<?php include_once("close.php"); ?>
-<?php require_once('footer.html');?>
