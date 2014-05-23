@@ -19,7 +19,10 @@
 		if($count==1){
 			$_SESSION['username']=$username;
 			$_SESSION['fname'] = $row['firstname'];
-			header('location:index.php');	
+			if($_SESSION['user'] == 'student')
+				header('location:index.php');
+			else
+				header('location:staff.php');	
 		}
 		else{
 			echo "Username and Password does not match!";
