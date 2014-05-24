@@ -18,7 +18,7 @@
 	foreach($tags as $select)
 		$tageach .= $select.',';
 
-	if(empty($_SESSION['username'])){ // guest
+	if(!isset($_SESSION['username'])){ // guest
 		//check first if email already exist
 		$query = "SELECT gid FROM guests WHERE email = $email";
 		$result_query = mysql_query($query); 
@@ -34,14 +34,18 @@
 		$_SESSION['user'] = 'guest';
 	}
 
-	if($_SESSION['user']!= 'guest'){ //student and staff registration of Ticket
+	if($_SESSION['user'] == 'student'){ //student and staff registration of Ticket
 		$username = $_SESSION['username'];
-		$sql = "INSERT INTO tickets VALUES ('','$subject',NOW(),'$tageach', '$division', 0, NOW(), '$type', '$username', NULL, NULL)";
+		$sql = "INSERT INTO tickets VALUES (NULL,'$subject',NOW(),'$tageach', '$division', 0, NOW(), '$type', '$username', NULL, NULL, 0)";
+	}
+	else if($_SESSION['user']== 'staff'){
+		$username = $_SESSION['username'];
+		$sql = "INSERT INTO tickets VALUES (NULL,'$subject',NOW(),'$tageach', '$division', 0, NOW(), '$type', NULL, NULL, '$username', 0)";
 	}
 	else{		// guest registration of ticket
-		$sql = "INSERT INTO tickets VALUES ('','$subject', NOW(), '$tageach', '$division', 0, NOW(), '$type', NULL, $gid, NULL )";
+		$sql = "INSERT INTO tickets VALUES (NULL,'$subject', NOW(), '$tageach', '$division', 0, NOW(), '$type', NULL, $gid, NULL , 0)";
 	}
-
+	
 	$result = mysql_query($sql);
 	if($result){ // registration of thread
 		$sql = "SELECT tid FROM tickets WHERE subject='$subject'";
@@ -52,7 +56,7 @@
 			$query = "INSERT INTO threads (t_id, respondent, datesubmit, body) VALUES ($ticketid, 0, NOW(), '$description')";
 			$result = mysql_query($query);
 			if($result){
-			echo "Successfully Added! ";
+			echo "<p>Your concern is now delivered. Reply will be send to ".$email." with a reference number: Q-".$ticketid."</p>";
 			}
 		}
 	}	

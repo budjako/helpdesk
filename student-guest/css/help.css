@@ -22,15 +22,15 @@
 }
 
 #help-notif{
-background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 26%, rgba(128,194,23,1) 65%, rgba(128,194,23,1) 86%, rgba(124,188,10,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(26%,rgba(161,213,79,1)), color-stop(65%,rgba(128,194,23,1)), color-stop(86%,rgba(128,194,23,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Opera 11.10+ */
-height: 50px;
-text-align:center;
-margin-top: 1em;
-padding: 0.1em;
-display: none;
+	background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 26%, rgba(128,194,23,1) 65%, rgba(128,194,23,1) 86%, rgba(124,188,10,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(26%,rgba(161,213,79,1)), color-stop(65%,rgba(128,194,23,1)), color-stop(86%,rgba(128,194,23,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 26%,rgba(128,194,23,1) 65%,rgba(128,194,23,1) 86%,rgba(124,188,10,1) 100%); /* Opera 11.10+ */
+	height: 50px;
+	text-align:center;
+	margin-top: 1em;
+	padding: 0.1em;
+	display: none;
 }
 
 .help-container table td{
@@ -68,18 +68,16 @@ display: none;
 	text-align: center;
 	display: inline-block;
 	margin: 1em;
+	padding: 0.5em 2em;
+	color: black;
 	/*height: 3em;*/
 	/*border: 1px solid black;*/
 }
 
-#browse-category li a{
-	padding: 0.5em 2em;
-	color: black;
-}
-
-#browse-category li a:hover{
+#browse-category li:hover{
 	border-bottom: 2px solid #A80000;
 	color: #A80000;
+	cursor: pointer;
 }
 
 #help-container-right{
@@ -105,11 +103,18 @@ display: none;
 	padding: 0.5em;
 }
 
+#top-quest li{
+	color: blue;
+}
+
+#top-quest li:hover{
+	cursor: pointer;
+
+}
+
 #browse-category li{
 	list-style: none;
 }
-
-
 
 #top-quest li, #ask-div p{
 	font-size: 0.9em; 

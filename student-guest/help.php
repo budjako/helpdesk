@@ -152,23 +152,49 @@
 								<div id="browse-category">
 									<h3>Browse Category</h3>
 									<ul class="faq-category">
-										<li><a href="#">Category 1</a></li>											
-										<li><a href="#">Category 2</a></li>											
-										<li><a href="#">Category 3</a></li>											
-										<li><a href="#">Category 4</a></li>											
-										<li><a href="#">Category 5</a></li>											
-										<li><a href="#">Category 6</a></li>											
-										<li><a href="#">Category 7</a></li>											
-										<li><a href="#">Category 8</a></li>											
-										<li><a href="#">Category 9</a></li>											
-										<li><a href="#">Category 10</a></li>											
+										<?php
+											$query = "SELECT DISTINCT tag FROM faqs ORDER BY tag";
+											$result = mysql_query($query);
+											if (!$result) die(mysql_error());
+											while($row = mysql_fetch_assoc($result)){
+											echo "<li onclick='display_question(\"".$row['tag']."\", \"category\")'>".$row['tag']."</li>";
+										}		
+										?>										
 									</ul>
+								</div>
+								<div id="conversation">	
+									<?php
+										if(isset($_SESSION['username'])){
+											echo "<table>";
+											echo "<thead><tr><td>Ticket ID</td><td>Subject</td><td>Last Update</td><td>Status</td></tr></thead>";
+											echo "<tbody>";
+											$query = "SELECT * FROM tickets WHERE student_no = '".$_SESSION['username']."'";
+											$result = mysql_query($query);
+											if(!$result) die(mysql_error());
+											while($row = mysql_fetch_assoc($result)){
+												echo"<tr onclick='view_threads(".$row['tid'].")'>";
+												echo "<td> Q-".$row['tid']."</td>";
+												echo "<td>".$row['subject']."</td>";
+												echo "<td>".$row['datelastupdate']."</td>";
+												echo "<td>";
+												if($row['status'] == 0) echo "New Email";
+												else if($row['status'] == 1) echo "Staff Replied";
+												else if($row['status'] == 2) echo "User Replied";
+												else if($row['status'] == 3) echo "Forwarded";
+												else echo "Closed";
+												echo "</td>";
+												echo "</tr>";
+											} 
+											echo "</tbody>";
+											echo "</table>";
+										}
+									?>
 								</div>
 							</div>
 							<div id="help-container-right">
 								<div id="ask-div">
 									<h3>OSAM Support</h3>
-									<p>Let us know your concern.
+									<p>Submit your help request.
 									<button id="ask-button">Ask Us</button>
 									</p>
 								</div>

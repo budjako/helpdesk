@@ -25,7 +25,9 @@
 									$_SESSION['user'] = 'guest';
 								}							
 							?>
-							<form id="formhelp" >
+
+
+							<form id="formhelp" action="addTicket.php" method="post">
 								<table>
 									<tr>
 										<td> * Firstname :
