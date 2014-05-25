@@ -50,34 +50,38 @@
 }
 
 #search-div{
-	margin-top: 1em;
+	margin: 1em 0em;
 	/*border: 1px solid black;*/
 }
 
-#search-div textarea{
-	width: 40em;
-	height: 1.75em;
-}
-
 #browse-category{
-	/*border: 1px solid blue;*/
-	margin-top: 2em;
+	border: 1px solid rgb(200,200,200);
+	margin-top: 1em;
+	border-radius: 1em;
+	padding: 1em;
+	background: rgb(250,250,250);
 }
 
 #browse-category ul>li{
 	text-align: center;
 	display: inline-block;
 	margin: 1em;
-	padding: 0.5em 2em;
-	color: black;
+	padding: 0.25em 1em;
+	color: #880000;
+	font-weight: bold;
+	width: 25%;
 	/*height: 3em;*/
 	/*border: 1px solid black;*/
 }
 
 #browse-category li:hover{
 	border-bottom: 2px solid #A80000;
-	color: #A80000;
+	color: #F80000;
 	cursor: pointer;
+}
+
+#browse-category h3{
+	margin: 0;
 }
 
 #help-container-right{
@@ -98,18 +102,18 @@
 }
 
 #top-quest{
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 	border-radius: 10px;
 	padding: 0.5em;
 }
 
 #top-quest li{
-	color: blue;
+	color: rgb(10, 10, 150);
 }
 
 #top-quest li:hover{
 	cursor: pointer;
-
+	color: #A80000;
 }
 
 #browse-category li{
@@ -123,3 +127,43 @@
 #top-quest ul{
 	padding: 0em 1.5em;
 }
+
+/* ----  View Threads Page ---- */
+#ticket-details{
+	border: 1px solid rgb(200,200,200);
+	background: rgb(250,250,250);
+	padding: 1em;
+	box-shadow: 1px 1px 1px rgb(200,200,200);
+}
+
+#ticket-header{
+	font-weight: bold;
+}
+
+#ticket-details p{
+	font-style: italic;
+	font-size: 0.8em;
+	color: rgb(50,50,50);
+}
+
+#thread-container{
+	/*border: 1px solid black;*/
+	margin-top: 1em;
+}
+
+.thread{
+	border: 1px solid rgb(200,200,200);
+	border-radius: 10px;
+	background: rgb(250,250,250);
+	margin-bottom: 0.5em;
+}
+
+.th-date{
+	border: 1px solid rgb(250,250,250);
+	background: rgb(255,255,255);
+	border-radius: 10px 10px 0px 0px;
+	text-align: right;
+	padding-right: 1em;
+
+}
+

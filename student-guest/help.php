@@ -149,55 +149,6 @@
 								<div id="search-div">									
 										<input type="text" id="search_input" name="search_input" results=3 size="70" placeholder="Type any keyword	 related to your search..." autofocus /> <button id="search_button" onclick="display_question('','search');">Search</button>
 								</div>
-								<div id="browse-category">
-									<h3>Browse Category</h3>
-									<ul class="faq-category">
-										<?php
-											$query = "SELECT DISTINCT tag FROM faqs ORDER BY tag";
-											$result = mysql_query($query);
-											if (!$result) die(mysql_error());
-											while($row = mysql_fetch_assoc($result)){
-											echo "<li onclick='display_question(\"".$row['tag']."\", \"category\")'>".$row['tag']."</li>";
-										}		
-										?>										
-									</ul>
-								</div>
-								<div id="conversation">	
-									<?php
-										if(isset($_SESSION['username'])){
-											echo "<table>";
-											echo "<thead><tr><td>Ticket ID</td><td>Subject</td><td>Last Update</td><td>Status</td></tr></thead>";
-											echo "<tbody>";
-											$query = "SELECT * FROM tickets WHERE student_no = '".$_SESSION['username']."'";
-											$result = mysql_query($query);
-											if(!$result) die(mysql_error());
-											while($row = mysql_fetch_assoc($result)){
-												echo"<tr onclick='view_threads(".$row['tid'].")'>";
-												echo "<td> Q-".$row['tid']."</td>";
-												echo "<td>".$row['subject']."</td>";
-												echo "<td>".$row['datelastupdate']."</td>";
-												echo "<td>";
-												if($row['status'] == 0) echo "New Email";
-												else if($row['status'] == 1) echo "Staff Replied";
-												else if($row['status'] == 2) echo "User Replied";
-												else if($row['status'] == 3) echo "Forwarded";
-												else echo "Closed";
-												echo "</td>";
-												echo "</tr>";
-											} 
-											echo "</tbody>";
-											echo "</table>";
-										}
-									?>
-								</div>
-							</div>
-							<div id="help-container-right">
-								<div id="ask-div">
-									<h3>OSAM Support</h3>
-									<p>Submit your help request.
-									<button id="ask-button">Ask Us</button>
-									</p>
-								</div>
 								<div id="top-quest">
 									<h3>Top Questions</h3>
 									<ul>
@@ -211,6 +162,50 @@
 									?>
 										
 									</ul>
+								</div>
+								<div id="browse-category">
+									<h3>Browse Category</h3>
+									<ul class="faq-category">
+										<?php
+											$query = "SELECT DISTINCT tag FROM faqs ORDER BY tag";
+											$result = mysql_query($query);
+											if (!$result) die(mysql_error());
+											while($row = mysql_fetch_assoc($result)){
+											echo "<li onclick='display_question(\"".$row['tag']."\", \"category\")'>".strtoupper($row['tag'])."</li>";
+										}		
+										?>										
+									</ul>
+								</div>
+								
+							</div>
+							<div id="help-container-right">
+								<div id="ask-div">
+									<h3>OSAM Support</h3>
+									<p>Can't find the answer from your question. Feel free to email us. We are always ready to assist you with any question you have in your mind.
+									</p>
+									<button id="ask-button">Ask Us</button>
+								</div>
+								<div id="conversation">	
+									<h3>Inquiry Box</h3>									
+									<?php
+										if(isset($_SESSION['username'])){					
+											$query = "SELECT * FROM tickets WHERE student_no = '".$_SESSION['username']."'";
+											$result = mysql_query($query);
+											if(!$result) die(mysql_error());
+											echo "<ul>";
+											while($row = mysql_fetch_assoc($result)){
+												echo "<li onclick='view_threads(".$row['tid'].")'>";
+												echo "Q-".$row['tid']." : ";
+												if($row['status'] == 0) echo "New Email";
+												else if($row['status'] == 1) echo "Staff Replied";
+												else if($row['status'] == 2) echo "User Replied";
+												else if($row['status'] == 3) echo "Forwarded";
+												else echo "Closed";											
+												echo " as of ".$row['datelastupdate']."</li>";
+											} 
+											echo "</ul>";
+										}
+									?>
 								</div>
 							</div>	
 						</div>	

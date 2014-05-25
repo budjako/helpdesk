@@ -15,12 +15,23 @@
 	echo "<div id ='ticket-header'>";
 	echo "Q-".$row['tid'].": ".$row['subject'];
 	echo "</div>";
-	echo "<p>".$row['datesubmit'];
+	echo "<p> Date Posted: ".$row['datesubmit']."<br />";
 	echo "Source: ";
 	if($row['source']==0) echo "Web"; 
 	else if($row['source']==1) echo "Email";
 	else echo "Phone";
+	echo "<br />";
 
+	echo "Status: ";
+	if($row['status'] == 0) echo "New Email";
+	else if($row['status'] == 1) echo "Staff Replied";
+	else if($row['status'] == 2) echo "User Replied";
+	else if($row['status'] == 3) echo "Forwarded";
+	else echo "Closed";
+	echo "<br />";
+
+	echo "Last Updated: ";
+	echo $row['datelastupdate'];
 	
 
 	echo "</p>";
@@ -31,21 +42,26 @@
 	$result = mysql_query($query);
 
 	if(!$result)die(mysql_error());
-	echo "<table>";
-	echo "<tr><th>Ticket ID</th><th>Thread ID</th><th>Body</th><th>Date Submitted</th><th>Respondent</th></tr>";
+
+	echo "<div id='thread-container'>";
 	while($row = mysql_fetch_assoc($result)){
-		echo "<tr>";
-		echo "<td>".$row['t_id']."</td>";
-		echo "<td>".$row['thid']."</td>";
-		echo "<td>".$row['body']."</td>";
-		echo "<td>".$row['datesubmit']."</td>";
+		echo "<div class='thread'>";
+		echo "<div class='th-date'>";
+		echo $row['datesubmit'];
+		echo "</div>";
+		echo "<div class='th-details'>";
+		echo "<table><tr>";
 		if($row['respondent']==0)
-			echo "<td>".$_SESSION['fname']."</td>";
+			echo "<td>".$_SESSION['fname'].": </td>";
 		else
-			echo "<td>STAFF</td>";
-		echo "</tr>";
+			echo "<td>STAFF: </td>";
+		echo "<td>".$row['body']."</td>";
+		echo "</tr></table>";
+		echo "</div>";
+		echo "</div>";
 	}
-	echo "</table>";
+	
+	echo "</div>";
 
 	//reply option and clode option
 	echo "<h3>Post a reply</h3>";
