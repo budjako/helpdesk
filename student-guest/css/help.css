@@ -95,10 +95,15 @@
 }
 
 #ask-div{
-	border: 1px solid green;
-	margin-bottom: 0.5em;
+	/*border: 1px solid #880000;*/
+	margin: 0.75em 0em;
 	border-radius: 10px;
 	padding: 0.5em;
+	box-shadow: 0px 0px 3px #A80000;
+}
+
+#ask-div button{
+	margin: 0 auto;
 }
 
 #top-quest{
@@ -120,15 +125,36 @@
 	list-style: none;
 }
 
-#top-quest li, #ask-div p{
+#top-quest li, #ask-div p, #inquiry-box li{
 	font-size: 0.9em; 
 }
 
-#top-quest ul{
+#top-quest ul, #inquiry-box ul{
 	padding: 0em 1.5em;
 }
 
+#inquiry-box{
+	/*border: 1px solid #880000;*/
+	border-radius: 10px;
+	padding: 0.5em;
+	box-shadow: 0px 0px 3px #A80000;
+}
+
+#inquiry-box h5{
+	margin: 0;
+	color: #880000;
+	font-weight: normal;
+	/*text-align: center;*/
+}
+
+#inquiry-box h5:hover{
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 /* ----  View Threads Page ---- */
+
 #ticket-details{
 	border: 1px solid rgb(200,200,200);
 	background: rgb(250,250,250);

@@ -14,7 +14,7 @@
 		$query = "SELECT question, faqno, answer FROM faqs ORDER BY visit_count DESC LIMIT 10";
 	}
 	else{
-		echo $input;
+		echo "<h3>".$input."</h3>";
 		$query = "SELECT question, faqno, answer FROM faqs WHERE tag = '$input'";
 	}		
 		$result = mysql_query($query);

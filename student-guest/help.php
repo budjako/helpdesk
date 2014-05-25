@@ -185,11 +185,11 @@
 									</p>
 									<button id="ask-button">Ask Us</button>
 								</div>
-								<div id="conversation">	
-									<h3>Inquiry Box</h3>									
+								<div id="inquiry-box">	
+									<h3>Inquiry Box</h3> 									
 									<?php
 										if(isset($_SESSION['username'])){					
-											$query = "SELECT * FROM tickets WHERE student_no = '".$_SESSION['username']."'";
+											$query = "SELECT * FROM tickets WHERE student_no = '".$_SESSION['username']."' ORDER BY datelastupdate LIMIT 5";
 											$result = mysql_query($query);
 											if(!$result) die(mysql_error());
 											echo "<ul>";
@@ -206,6 +206,8 @@
 											echo "</ul>";
 										}
 									?>
+
+									<h5>View All</h5>
 								</div>
 							</div>	
 						</div>	

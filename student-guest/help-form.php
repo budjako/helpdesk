@@ -58,6 +58,7 @@
 										<td>
 											Division:
 												<select id="division" name="division">
+													<option value="ALL">ALL</option>
 													<option value="COMMIT">Communications and Information and Technology (COMMIT)</option>
 													<option value="CTD">Counseling and Testing Division (CTD)</option>
 													<option value="DO">Director's Office (DO)</option>
