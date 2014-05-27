@@ -1,5 +1,5 @@
 <?php
-	$link = mysql_connect('localhost', 'OsamHelpDesk', '*osamhelpdesk*');
+	$link = mysql_connect('localhost', 'root','', 'helpdesk');
 
 	if (!$link) {
 		die('Could not connect: ' . mysql_error());
